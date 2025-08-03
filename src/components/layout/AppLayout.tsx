@@ -37,7 +37,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                   <User className="h-5 w-5" />
                 </Button>
                 <Button 
-                  variant="outline" 
+                  variant="secondary" 
                   size="sm"
                   onClick={() => {
                     // Aqui seria implementada a lógica de logout
