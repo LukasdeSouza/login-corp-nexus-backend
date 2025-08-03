@@ -2,12 +2,19 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "./AppSidebar"
 import { Bell, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 interface AppLayoutProps {
   children: React.ReactNode
 }
 
 export function AppLayout({ children }: AppLayoutProps) {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    // Aqui você pode adicionar lógica adicional de logout como limpar tokens, etc.
+    navigate("/login")
+  }
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
@@ -39,11 +46,7 @@ export function AppLayout({ children }: AppLayoutProps) {
                 <Button 
                   variant="secondary" 
                   size="sm"
-                  onClick={() => {
-                    // Aqui seria implementada a lógica de logout
-                    console.log('Logout realizado');
-                    // Exemplo: window.location.href = '/login';
-                  }}
+                  onClick={handleLogout}
                   className="ml-2 text-xs"
                 >
                   Sair
