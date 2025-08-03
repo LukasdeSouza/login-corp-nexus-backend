@@ -36,6 +36,18 @@ export function AppLayout({ children }: AppLayoutProps) {
                 <Button variant="ghost" size="icon">
                   <User className="h-5 w-5" />
                 </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => {
+                    // Aqui seria implementada a lógica de logout
+                    console.log('Logout realizado');
+                    // Exemplo: window.location.href = '/login';
+                  }}
+                  className="ml-2 text-xs"
+                >
+                  Sair
+                </Button>
               </div>
             </div>
           </header>
