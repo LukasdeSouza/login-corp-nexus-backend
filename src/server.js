@@ -34,8 +34,20 @@ app.use(limiter);
 
 // Middleware de CORS
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: [
+    'http://localhost:3000',   // Create React App default
+    'http://localhost:5173',   // Vite default
+    'http://localhost:8080',   // Vite configurado no projeto
+    'http://localhost:4173',   // Vite preview
+    'http://localhost:3001',   // Alternativa comum
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:8080',
+    process.env.FRONTEND_URL
+  ].filter(Boolean), // Remove valores undefined/null
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 
 // Middleware de logging
