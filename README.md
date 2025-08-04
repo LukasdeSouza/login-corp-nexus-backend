@@ -1,73 +1,130 @@
-# Welcome to your Lovable project
+# Login Corp Nexus Backend
 
-## Project info
+API Backend para o sistema Login Corp Nexus, construída com Node.js e Express.
 
-**URL**: https://lovable.dev/projects/3337fec3-8d3d-4325-a755-9f1de0565be8
+## 🚀 Tecnologias
 
-## How can I edit this code?
+- **Node.js** - Runtime JavaScript
+- **Express.js** - Framework web
+- **CORS** - Cross-Origin Resource Sharing
+- **Helmet** - Middleware de segurança
+- **Morgan** - Logger HTTP
+- **Express Rate Limit** - Rate limiting
+- **dotenv** - Variáveis de ambiente
 
-There are several ways of editing your application.
+## 📁 Estrutura do Projeto
 
-**Use Lovable**
+```
+src/
+├── middleware/          # Middlewares da aplicação
+│   ├── auth.js         # Autenticação e autorização
+│   └── validation.js   # Validação de dados
+├── routes/             # Definição das rotas
+│   ├── auth.js         # Rotas de autenticação
+│   ├── users.js        # Rotas de usuários
+│   └── health.js       # Health check
+├── utils/              # Utilitários
+│   └── response.js     # Helpers para resposta da API
+└── server.js           # Arquivo principal do servidor
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3337fec3-8d3d-4325-a755-9f1de0565be8) and start prompting.
+## 🛠️ Instalação
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Clone o repositório
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-**Use your preferred IDE**
+3. Copie o arquivo de ambiente:
+   ```bash
+   cp .env.example .env
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+4. Configure as variáveis de ambiente no arquivo `.env`
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## ▶️ Execução
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Desenvolvimento
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Produção
+```bash
+npm start
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+O servidor estará disponível em: `http://localhost:3000`
 
-**Use GitHub Codespaces**
+## 📡 Endpoints da API
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Health Check
+- `GET /api/health` - Status básico da API
+- `GET /api/health/status` - Status detalhado
 
-## What technologies are used for this project?
+### Autenticação
+- `POST /api/auth/login` - Login de usuário
+- `POST /api/auth/register` - Registro de usuário
+- `POST /api/auth/logout` - Logout
+- `POST /api/auth/refresh` - Renovar token
+- `POST /api/auth/forgot-password` - Recuperar senha
+- `POST /api/auth/reset-password` - Redefinir senha
 
-This project is built with:
+### Usuários
+- `GET /api/users/profile` - Obter perfil do usuário
+- `PUT /api/users/profile` - Atualizar perfil
+- `PUT /api/users/change-password` - Alterar senha
+- `DELETE /api/users/account` - Excluir conta
+- `GET /api/users` - Listar usuários (admin)
+- `PUT /api/users/:id/role` - Alterar role (admin)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🔧 Próximos Passos
 
-## How can I deploy this project?
+Para completar o desenvolvimento, você precisará implementar:
 
-Simply open [Lovable](https://lovable.dev/projects/3337fec3-8d3d-4325-a755-9f1de0565be8) and click on Share -> Publish.
+1. **Banco de Dados**
+   - Escolher e configurar (PostgreSQL, MongoDB, etc.)
+   - Criar modelos/schemas
+   - Implementar conexão
 
-## Can I connect a custom domain to my Lovable project?
+2. **Autenticação JWT**
+   - Instalar `jsonwebtoken`
+   - Implementar geração e validação de tokens
+   - Sistema de refresh tokens
 
-Yes, you can!
+3. **Hash de Senhas**
+   - Instalar `bcrypt`
+   - Implementar hash e comparação
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+4. **Validação Robusta**
+   - Instalar `joi` ou `express-validator`
+   - Melhorar validações
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+5. **Testes**
+   - Configurar Jest
+   - Testes unitários e de integração
+
+6. **Deploy**
+   - Configurar para produção
+   - Variables de ambiente de produção
+
+## 🔒 Segurança
+
+A API já inclui:
+- Helmet para headers de segurança
+- Rate limiting
+- CORS configurado
+- Validação básica de entrada
+
+## 📝 Licença
+
+ISC
+
+## 👥 Contribuição
+
+1. Fork o projeto
+2. Crie uma branch para sua feature
+3. Commit suas mudanças
+4. Push para a branch
+5. Abra um Pull Request
